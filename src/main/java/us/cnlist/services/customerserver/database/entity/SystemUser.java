@@ -12,6 +12,7 @@ public class SystemUser extends User {
     private Long id;
     private Date registrationDate;
     private boolean enabled;
+    private DbUserProfile userProfile;
 
     public SystemUser() {
 
@@ -57,5 +58,15 @@ public class SystemUser extends User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    @JoinColumn(name = "profile")
+    @OneToOne(fetch = FetchType.LAZY)
+    public DbUserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(DbUserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 }
