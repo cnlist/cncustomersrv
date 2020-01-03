@@ -32,4 +32,16 @@ public class CitizenProfile extends Citizen {
     public String getSecondName() {
         return super.getSecondName();
     }
+
+    @Override
+    @Column(name = "middle_name")
+    public String getMiddleName() {
+        return super.getMiddleName();
+    }
+
+    @Override
+    @Column(name = "male")
+    public boolean isMale() {
+        return super.isMale();
+    }
 }

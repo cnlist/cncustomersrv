@@ -22,6 +22,7 @@ public class UserProfileController {
     public UserProfile getUserProfileByEmail(@PathVariable("userEmail") String userEmail) {
         DbUserProfile profile = profileRepository.getProfileByEmail(userEmail);
         UserProfile userProfile = new UserProfile();
+        userProfile.setId(profile.getId());
         userProfile.setCitizenData(profile.getCitizenProfile());
         return userProfile;
     }
