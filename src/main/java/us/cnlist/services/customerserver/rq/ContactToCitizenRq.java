@@ -3,17 +3,17 @@ package us.cnlist.services.customerserver.rq;
 import us.cnlist.objects.contacts.Contact;
 import us.cnlist.objects.people.Citizen;
 
-public class AddContactToCitizenRq {
+public class ContactToCitizenRq {
 
     private Citizen citizen;
     private Contact contact;
 
-    public AddContactToCitizenRq(Citizen citizen, Contact contact) {
+    public ContactToCitizenRq(Citizen citizen, Contact contact) {
         this.citizen = citizen;
         this.contact = contact;
     }
 
-    public AddContactToCitizenRq() {
+    public ContactToCitizenRq() {
     }
 
     public Citizen getCitizen() {
