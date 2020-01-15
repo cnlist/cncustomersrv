@@ -9,6 +9,7 @@ import us.cnlist.services.customerserver.database.repository.CitizenContactRepos
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CitizenContactService {
@@ -18,6 +19,12 @@ public class CitizenContactService {
 
     public List<CitizenContact> getCitizenContacts(Citizen citizen) {
         return citizenContactRepository.loadContacts(citizen.getId());
+    }
+
+    public void addContactToCitizen(Contact contact, Long citizenId) {
+        Citizen citizen = new Citizen();
+        citizen.setId(citizenId);
+        this.addContactToCitizen(contact, citizen);
     }
 
     @Transactional
@@ -43,5 +50,22 @@ public class CitizenContactService {
         citizenContact.setContactType(contact.getContactType());
         citizenContact.setValue(contact.getValue());
         citizenContactRepository.save(citizenContact);
+    }
+
+    public Contact convert(CitizenContact citizenContact) {
+        Contact contact = new Contact();
+        contact.setId(citizenContact.getId());
+        contact.setContactType(citizenContact.getContactType());
+        contact.setValue(citizenContact.getValue());
+        return contact;
+    }
+
+    public List<Contact> convertList(List<CitizenContact> cx) {
+        return cx.stream().map(this::convert).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void deleteContact (Long id) {
+        citizenContactRepository.deleteById(id);
     }
 }

@@ -3,7 +3,8 @@ package us.cnlist.services.customerserver.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Controller;
-import us.cnlist.services.customerserver.rq.ContactToCitizenRq;
+
+import us.cnlist.objects.messages.rq.ContactToCitizenRq;
 import us.cnlist.services.customerserver.services.CitizenContactService;
 
 @Controller
