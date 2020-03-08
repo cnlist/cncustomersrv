@@ -14,7 +14,6 @@ public class PasswordCryptor {
                     password.getBytes()
             )).toString(16);
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
 
