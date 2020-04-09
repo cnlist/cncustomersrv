@@ -4,22 +4,25 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-
 public class PasswordCryptorTest {
+    final String salt = "salt";
+
     @Test
     public void testHashPasswordWithNormal() {
+
         String passwordToHash = "test_password";
-        String value = "-604801ede8512bbd4fb3f0a1bc4a2a582cd78f69";
-        PasswordCryptor cryptor = new PasswordCryptor();
+        PasswordCryptor cryptor = new PasswordCryptor(salt);
         String rc = cryptor.hashPassword(passwordToHash);
-        assert (value.equals(rc));
+
+        PasswordCryptor control = new PasswordCryptor(salt);
+        Assertions.assertEquals(rc, control.hashPassword(passwordToHash));
     }
 
     @Test
     public void testHashNull() {
         String exceptionMessage = "Password should not be empty or null";
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new PasswordCryptor().hashPassword(null);
+            new PasswordCryptor(salt).hashPassword(null);
         });
         Assert.assertEquals(exceptionMessage, exception.getMessage());
     }
@@ -28,7 +31,7 @@ public class PasswordCryptorTest {
     public void testHashEmpty() {
         String exceptionMessage = "Password should not be empty or null";
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new PasswordCryptor().hashPassword("");
+            new PasswordCryptor(salt).hashPassword("");
         });
         Assert.assertEquals(exceptionMessage, exception.getMessage());
     }
