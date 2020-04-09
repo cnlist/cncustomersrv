@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
 @PropertySources({
-        @PropertySource("/opt/cnlist/customserv/application.properties")
+        @PropertySource("file:/opt/cnlist/customserv/application.properties")
 })
 public class CustomerServerApplication extends SpringBootServletInitializer {
 
