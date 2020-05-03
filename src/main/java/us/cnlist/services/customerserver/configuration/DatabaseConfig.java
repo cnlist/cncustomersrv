@@ -2,6 +2,7 @@ package us.cnlist.services.customerserver.configuration;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
@@ -20,6 +21,7 @@ import java.util.Map;
 @Configuration
 @EnableJpaRepositories(basePackages = {"us.cnlist.services.customerserver.database"})
 @EnableTransactionManagement
+@EntityScan(basePackages = {"us.cnlist.objects"})
 public class DatabaseConfig extends JpaBaseConfiguration {
 
 
