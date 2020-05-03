@@ -30,7 +30,7 @@
         <dependency>
             <groupId>us.cnlist</groupId>
             <artifactId>common-objects</artifactId>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
