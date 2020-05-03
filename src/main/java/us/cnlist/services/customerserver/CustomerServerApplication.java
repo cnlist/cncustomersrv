@@ -13,13 +13,13 @@ import org.springframework.context.annotation.PropertySources;
 })
 public class CustomerServerApplication extends SpringBootServletInitializer {
 
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerServerApplication.class, args);
+    }
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(CustomerServerApplication.class);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(CustomerServerApplication.class, args);
     }
 
 }

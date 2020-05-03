@@ -12,7 +12,7 @@ public class SecurityConfiguration {
     private String saltString;
 
     @Bean
-    public PasswordCryptor passwordCryptor(){
+    public PasswordCryptor passwordCryptor() {
         return new PasswordCryptor(saltString);
     }
 
