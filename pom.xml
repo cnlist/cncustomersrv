@@ -10,16 +10,35 @@
     </parent>
     <groupId>us.cnlist.services</groupId>
     <artifactId>customer-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>customer-server</name>
     <description>CnList Customers storage</description>
-
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>cnlist-data</id>
-            <name>cnlist-data</name>
-            <url>http://192.168.10.5:8081/repository/cnlist-data/</url>
+            <id>cnlist-releases</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>cnlist-snapshots</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <repositories>
+
+        <repository>
+            <id>cnlist-releases</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-releases</url>
+
+        </repository>
+        <repository>
+            <id>cnlist-snapshots</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
+
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>http://194.58.103.128:8081/repository/maven-central/</url>
         </repository>
     </repositories>
     <properties>
@@ -30,7 +49,7 @@
         <dependency>
             <groupId>us.cnlist</groupId>
             <artifactId>common-objects</artifactId>
-            <version>0.1.2-SNAPSHOT</version>
+            <version>0.1.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,7 +64,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
