@@ -5,17 +5,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import us.cnlist.objects.people.User;
-import us.cnlist.services.customerserver.CustomerServerApplication;
 import us.cnlist.services.customerserver.component.PasswordCryptor;
 import us.cnlist.services.customerserver.database.repository.UserRepository;
 
-import java.time.LocalTime;
 import java.util.Calendar;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -28,8 +23,9 @@ public class UserRegisterDbTestIT {
     @Autowired
     private PasswordCryptor passwordCryptor;
 
+
     @Test
-    public void testUserRegister(){
+    public void testUserRegister() {
         User user = new User();
         user.setPassword(passwordCryptor.hashPassword("TestPas$27w(op"));
         user.setEnabled(true);

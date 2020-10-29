@@ -11,7 +11,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
+import us.cnlist.objects.requests.AuthenticationRQ;
 import us.cnlist.objects.requests.UserRegistrationRQ;
+import us.cnlist.objects.responses.AuthenticationRS;
 import us.cnlist.objects.responses.ResponseType;
 import us.cnlist.objects.responses.UserRegistrationRS;
 
@@ -54,6 +56,23 @@ public class UserRegistrationTestIT {
         Assert.assertNotNull(rs);
         Assert.assertEquals(rs.getResponseType(),ResponseType.SUCCESS);
         Assert.assertThat(rs.getUserId(), Matchers.greaterThan(0L));
+
+    }
+
+    @Test
+    public void userAuthTest(){
+        String email = "test@email.com";
+        AuthenticationRQ rq = new AuthenticationRQ();
+        rq.setEmail(email);
+        rq.setPassword("TestPassword134");
+        AuthenticationRS rs =
+                testRestTemplate.postForObject("" +
+                                "http://localhost:"+port+"/auth",
+                        rq,
+                        AuthenticationRS.class);
+        assert (rs.getResponseType()==ResponseType.SUCCESS);
+        assert (rs.getAuthenticatedUser() !=null );
+        assert (rs.getAuthenticatedUser().getLogin().equals(email));
 
     }
 

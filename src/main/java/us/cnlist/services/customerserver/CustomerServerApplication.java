@@ -7,11 +7,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableTransactionManagement
-@EnableJpaRepositories
 public class CustomerServerApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
